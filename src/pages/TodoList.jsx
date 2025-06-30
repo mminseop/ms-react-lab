@@ -7,14 +7,14 @@ function TodoList() {
         { id: 1, content: "데이터2" },
     ]);
 
-    const [inputValue, setInputValue] = useState('');
+    const [inputValue, setInputValue] = useState("");
 
     return (
         <>
             <div className="todo-container">
                 <TodoListHeader />
                 <TodoListItems todo={todo} />
-                <TodoInput todo={todo}/>
+                <TodoInput todo={todo} inputValue={inputValue} />
             </div>
         </>
     );
@@ -42,19 +42,19 @@ function TodoListItems({ todo }) {
     );
 }
 
-function TodoInput({todo}) {
+function TodoInput({ todo }) {
     return (
         <div className="input-section">
             <input
                 type="text"
                 placeholder="할 일을 입력하세요"
-                value = {inputValue}
-                onChange={(e) => {setInputValue(e.target.value)}}
+                onChange={(e) => {
+                    setInputValue(e.target.value);
+                }}
             />
             <button>추가</button>
         </div>
     );
 }
-
 
 export default TodoList;
