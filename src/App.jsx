@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import Home from "./pages/Home";
 import TodoList from "./pages/TodoList";
+import Animal from "./pages/animal";
 
 function App() {
     return (
@@ -12,6 +13,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/todo" element={<TodoList />} />
+                    <Route path="/animal" element={<Animal />} />
                 </Routes>
             </div>
         </BrowserRouter>

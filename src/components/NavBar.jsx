@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import '../styles/NavBar.css'; // CSS로 꾸미고 싶다면
+import '../styles/NavBar.css';
 
 const NavBar = () => {
   const location = useLocation();
@@ -7,6 +7,7 @@ const NavBar = () => {
   const navItems = [
     { to: '/', label: '🏠 Home' },
     { to: '/todo', label: '📝 Todo List' },
+    { to: '/animal', label: '📝 Animal' },
   ];
 
   return (

@@ -1,72 +1,86 @@
 /* src/pages/TodoList.css */
 .todo-container {
-  max-width: 500px;
-  margin: 2rem auto;
-  padding: 1.5rem;
-  background: #fefefe;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    max-width: 500px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background: #fefefe;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 .todo-container h2 {
-  margin-bottom: 1rem;
-  text-align: center;
+    margin-bottom: 1rem;
+    text-align: center;
 }
 
 .input-section {
-  display: flex;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
-  margin-top: 2rem;
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    margin-top: 2rem;
 }
 
 .input-section input {
-  flex: 1;
-  padding: 0.5rem;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  outline: none;
+    flex: 1;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    outline: none;
 }
 
 .input-section button {
-  padding: 0.5rem 1rem;
-  border: none;
-  background-color: #007bff;
-  color: white;
-  border-radius: 6px;
-  cursor: pointer;
+    padding: 0.5rem 1rem;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
 }
 
 .input-section button:hover {
-  background-color: #0056b3;
+    background-color: #0056b3;
 }
 
 .todo-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
-.todo-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #f4f4f4;
-  padding: 0.75rem 1rem;
-  border-radius: 6px;
-  border: 1px solid #ddd;
+.todo-item-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f4f4f4;
+    border: 1px solid #ddd;
 }
 
-.todo-item button {
-  background: #dc3545;
-  border: none;
-  color: white;
-  padding: 0.4rem 0.7rem;
-  border-radius: 4px;
-  cursor: pointer;
+.todo-item-wrap .todo-item {
+    width: 70%;
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+    border: none;
+    background: inherit;
+    font-size: 1rem;
+    outline: none;
 }
 
-.todo-item button:hover {
-  background: #b52b38;
+.todo-item-wrap .btn-wrap {
+    display: flex;
+    gap: 5px;
+    margin-right: 0.3rem;
+}
+
+.todo-item-wrap button {
+    background: #dc3545;
+    border: none;
+    color: white;
+    padding: 0.3rem 0.7rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.todo-item-wrap button:hover {
+    background: #b52b38;
 }
