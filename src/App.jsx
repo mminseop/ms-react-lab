@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import Home from "./pages/Home";
 import TodoList from "./pages/TodoList";
-import Animal from "./pages/animal";
+import Animal from "./pages/Animal";
 
 function App() {
     return (
