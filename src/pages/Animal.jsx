@@ -13,9 +13,9 @@ function Animal() {
                 <h1>💚 동물 뽑기 💚</h1>
             </div>
             <Routes>
-                <Route path="./" element={<AnimalMain />} />
-                <Route path="./detail" element={<AnimalDetail />} />
-                <Route path="./search" element={<AnimalSearch />} />
+                <Route path="/" element={<AnimalMain />} />
+                <Route path="detail" element={<AnimalDetail />} />
+                <Route path="search" element={<AnimalSearch />} />
             </Routes>
             <footer>all rights reserved to ms</footer>
         </>
