@@ -5,86 +5,90 @@ function TodoList() {
     const [todo, setTodo] = useState([
         { id: 0, content: "데이터1" },
         { id: 1, content: "데이터2" },
+        { id: 2, content: "데이터3" },
     ]);
-
-    const [inputValue, setInputValue] = useState("");
 
     return (
         <>
-            <div className="todo-container">
+            <div className="todo-list-container">
                 <TodoListHeader />
-                <TodoListItems todo={todo} setTodo={setTodo} />
-                <TodoInput
-                    todo={todo}
-                    setTodo={setTodo}
-                    inputValue={inputValue}
-                    setInputValue={setInputValue}
-                />
+                <TodoListRows todo={todo} setTodo={setTodo} />
+                <TodoListInput todo={todo} setTodo={setTodo} />
             </div>
         </>
     );
 }
 
 function TodoListHeader() {
-    return <h1>📝 Todo List</h1>;
+    return <h1>TodoList</h1>;
 }
 
-function TodoListItems({ todo, setTodo }) {
-    const handleDel = (id) => {
-        const newTodo = todo.filter((x) => {
-            return x.id !== id;
-        })
-        setTodo(newTodo);
-    }
+function TodoListRows({ todo, setTodo }) {
     return (
-        <div className="todo-list">
-            {todo.map((x) => {
+        <div className="todo-list-wrap">
+            {todo.map((row) => {
                 return (
-                    <div key={x.id} className="todo-item-wrap">
-                        <input
-                            name="todo-name"
-                            className="todo-item"
-                            value={x.content}
-                            onChange={(e) => {
-                                setTodo((e) => {
-                                    console.log(e.target);
-                                })
-                            }}
-                        />
-                        <div className="btn-wrap">
-                            <button>수정</button>
-                            <button onClick={() => handleDel(x.id)}>삭제</button>
-                        </div>
-                    </div>
+                    <GetTodoList
+                        key={`todo-list-${row.id}`}
+                        todo={todo}
+                        setTodo={setTodo}
+                        row={row}
+                    />
                 );
             })}
         </div>
     );
 }
 
-function TodoInput({ todo, setTodo, inputValue, setInputValue }) {
-    const handleAdd = () => {
-        const newTodo = {
-            // id: todo.length ? todo[todo.length - 1].id + 1 : 0,
-            id: Date.now(),
-            content: inputValue,
-        };
-        setTodo([...todo, newTodo]);
-        setInputValue("");
+function GetTodoList({ row, todo, setTodo }) {
+    const handleDeleteList = (id) => {
+        setTodo(todo.filter((x) => x.id !== id));
     };
+
     return (
-        <div className="input-section">
-            <input
-                type="text"
-                placeholder="할 일을 입력하세요"
-                value={inputValue}
-                onChange={(e) => {
-                    setInputValue(e.target.value);
-                }}
-            />
-            <button onClick={handleAdd}>추가</button>
+        <div className="todo-list-row">
+            <div className="todo-list-item">
+                <input className="todo-checkbox" type="checkbox" />
+                <div className="todo-list-content">{row.content}</div>
+            </div>
+            <div className="todo-list-item">
+                <button className="modify-btn">수정</button>
+                <button
+                    className="delete-btn"
+                    onClick={() => handleDeleteList(row.id)}
+                >
+                    삭제
+                </button>
+            </div>
         </div>
     );
 }
 
+function TodoListInput({ todo, setTodo }) {
+    const [inputValue, setInputValue] = useState("");
+
+    const handleAddList = () => {
+        if (!inputValue.trim()) return; // 빈 입력 방지
+        const newTodo = {
+            id: Date.now(),
+            content: inputValue,
+        };
+        const newTodoList = [...todo, newTodo];
+        setTodo(newTodoList);
+        setInputValue("");
+    };
+
+    return (
+        <>
+            <div className="todo-add-wrap">
+                <input
+                    value={inputValue}
+                    placeholder="할 일을 입력하세요"
+                    onChange={(e) => setInputValue(e.target.value)}
+                />
+                <button onClick={handleAddList}>추가하기</button>
+            </div>
+        </>
+    );
+}
 export default TodoList;

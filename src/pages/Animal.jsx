@@ -10,14 +10,13 @@ function Animal() {
     return (
         <>
             <div className="animal-title">
-                <h1>💚 동물 뽑기 💚</h1>
+                <h1>동물 뽑기</h1>
             </div>
             <Routes>
                 <Route path="/" element={<AnimalMain />} />
-                <Route path="detail" element={<AnimalDetail />} />
-                <Route path="search" element={<AnimalSearch />} />
+                <Route path="/detail/:id" element={<AnimalDetail />} />
+                <Route path="/search" element={<AnimalSearch />} />
             </Routes>
-            <footer>all rights reserved to ms</footer>
         </>
     );
 }
