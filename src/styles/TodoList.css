@@ -19,7 +19,6 @@
     min-width: 640px;
     max-width: 800px;
     font-size: 1rem;
-    /* border: 1px solid #ddd; */
 }
 
 .todo-list-row {
@@ -45,6 +44,10 @@
     align-items: center;
     height: 100%;
     gap: 10px;
+}
+
+.todo-list-row .todo-list-item:first-child {
+    flex: 1;
 }
 
 .todo-list-row .todo-list-item .todo-checkbox {
@@ -112,4 +115,13 @@ button:focus {
     width: 80%;
     height: 36px;
     box-sizing: border-box;
+}
+
+.todo-list-row .todo-list-item .modify-input {
+    padding: 6px 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    width: 95%;
+    height: 36px;
 }

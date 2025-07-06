@@ -41,23 +41,65 @@ function TodoListRows({ todo, setTodo }) {
 }
 
 function GetTodoList({ row, todo, setTodo }) {
+    const [isModify, setIsModify] = useState(false);
+    const [inputValue, setInputValue] = useState("");
+
     const handleDeleteList = (id) => {
         setTodo(todo.filter((x) => x.id !== id));
     };
 
-    return (
+    const handleModifyClick = () => {
+        setInputValue(row.content);
+        setIsModify(!isModify);
+    };
+
+    const handleCancelClick = () => {
+        setIsModify(!isModify);
+    };
+
+    const handleSaveClick = () => {
+        setTodo((prev) =>
+            prev.map((item) =>
+                item.id === row.id ? { ...item, content: inputValue } : item
+            )
+        );
+        setIsModify(false);
+    };
+
+    return !isModify ? (
         <div className="todo-list-row">
             <div className="todo-list-item">
                 <input className="todo-checkbox" type="checkbox" />
                 <div className="todo-list-content">{row.content}</div>
             </div>
             <div className="todo-list-item">
-                <button className="modify-btn">수정</button>
+                <button className="modify-btn" onClick={handleModifyClick}>
+                    수정
+                </button>
                 <button
                     className="delete-btn"
                     onClick={() => handleDeleteList(row.id)}
                 >
                     삭제
+                </button>
+            </div>
+        </div>
+    ) : (
+        <div className="todo-list-row">
+            <div className="todo-list-item">
+                <input
+                    type="text"
+                    className="modify-input"
+                    value={inputValue}
+                    onChange={(e) => setInputValue(e.target.value)}
+                />
+            </div>
+            <div className="todo-list-item">
+                <button className="modify-btn" onClick={handleCancelClick}>
+                    취소
+                </button>
+                <button className="delete-btn" onClick={handleSaveClick}>
+                    저장
                 </button>
             </div>
         </div>
