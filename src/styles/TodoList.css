@@ -114,7 +114,6 @@ button:focus {
     border-radius: 6px;
     width: 80%;
     height: 36px;
-    box-sizing: border-box;
 }
 
 .todo-list-row .todo-list-item .modify-input {
@@ -124,4 +123,14 @@ button:focus {
     border-radius: 6px;
     width: 95%;
     height: 36px;
+}
+
+.todo-list-row.complete {
+    background-color: #f3f4f6;
+}
+
+.todo-list-row.complete .todo-list-content {
+    text-decoration: line-through;
+    color: #aaa;
+    font-weight: 600;
 }

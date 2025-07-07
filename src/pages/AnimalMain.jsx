@@ -4,6 +4,7 @@ import { data } from "../assets/data/data.js";
 function AnimalMain() {
     return (
         <>
+            
             <div className="animal-wrap">
                 {data.map((elem) => {
                     return (

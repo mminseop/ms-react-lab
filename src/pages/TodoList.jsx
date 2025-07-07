@@ -43,6 +43,7 @@ function TodoListRows({ todo, setTodo }) {
 function GetTodoList({ row, todo, setTodo }) {
     const [isModify, setIsModify] = useState(false);
     const [inputValue, setInputValue] = useState("");
+    const [isChecked, setIsChecked] = useState(false); //할일 완료 체크 flag
 
     const handleDeleteList = (id) => {
         setTodo(todo.filter((x) => x.id !== id));
@@ -67,18 +68,31 @@ function GetTodoList({ row, todo, setTodo }) {
     };
 
     return !isModify ? (
-        <div className="todo-list-row">
+        <div className={`todo-list-row ${isChecked ? "complete" : ""}`}>
             <div className="todo-list-item">
-                <input className="todo-checkbox" type="checkbox" />
+                <input
+                    className="todo-checkbox"
+                    type="checkbox"
+                    checked={isChecked}
+                    onChange={(e) => {
+                        console.log("체크 상태:", e.target.checked);
+                        setIsChecked(e.target.checked);
+                    }}
+                />
                 <div className="todo-list-content">{row.content}</div>
             </div>
             <div className="todo-list-item">
-                <button className="modify-btn" onClick={handleModifyClick}>
+                <button
+                    className="modify-btn"
+                    onClick={handleModifyClick}
+                    disabled={!isChecked}
+                >
                     수정
                 </button>
                 <button
                     className="delete-btn"
                     onClick={() => handleDeleteList(row.id)}
+                    disabled={!isChecked}
                 >
                     삭제
                 </button>
