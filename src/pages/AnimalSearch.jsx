@@ -1,6 +1,7 @@
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { data } from "../assets/data/data";
 import { getRegExp } from "korean-regexp";
+import { useEffect } from "react";
 
 function AnimalSearch() {
     const [params] = useSearchParams();

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Route, Routes, useNavigate } from "react-router";
+import { Outlet, useNavigate } from "react-router";
 import AnimalMain from "./AnimalMain.jsx";
 import AnimalDetail from "./AnimalDetail.jsx";
 import AnimalSearch from "./AnimalSearch.jsx";
@@ -27,11 +27,8 @@ function Animal() {
                     />
                 </div>
             </div>
-            <Routes>
-                <Route path="/" element={<AnimalMain />} />
-                <Route path="/detail/:id" element={<AnimalDetail />} />
-                <Route path="/search" element={<AnimalSearch />} />
-            </Routes>
+            {/* 중첩된 라우팅을 위한 Outlet */}
+            <Outlet />
         </>
     );
 }

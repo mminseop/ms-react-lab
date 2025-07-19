@@ -85,14 +85,14 @@ function GetTodoList({ row, todo, setTodo }) {
                 <button
                     className="modify-btn"
                     onClick={handleModifyClick}
-                    disabled={!isChecked}
+                    disabled={isChecked}
                 >
                     수정
                 </button>
                 <button
                     className="delete-btn"
                     onClick={() => handleDeleteList(row.id)}
-                    disabled={!isChecked}
+                    disabled={isChecked}
                 >
                     삭제
                 </button>
